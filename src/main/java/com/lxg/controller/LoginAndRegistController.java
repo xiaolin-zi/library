@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
-public class LoginController {
+public class LoginAndRegistController {
 
     @Autowired
     private UserService userService;
@@ -25,11 +25,12 @@ public class LoginController {
     private AdminService adminService;
 
     @RequestMapping("/login")
-    public String login(){
+    public String login() {
         return "user/login";
     }
+
     @RequestMapping("/regist")
-    public String regist(){
+    public String regist() {
         return "user/regist";
     }
 
@@ -40,11 +41,11 @@ public class LoginController {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        String radio= req.getParameter("radio");
+        String radio = req.getParameter("radio");
 
         System.out.println(radio);
 
-        if(radio!=null&&radio.equals("admin")){
+        if (radio != null && radio.equals("admin")) {
             QueryWrapper<Admin> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("username", username).eq("password", password);
             Admin loginUser = adminService.getOne(queryWrapper);
@@ -62,7 +63,7 @@ public class LoginController {
                 //跳到成功页面login_success.html
                 return "user/login_Success";
             }
-        }else if(radio!=null&&radio.equals("reader")){
+        } else if (radio != null && radio.equals("reader")) {
             QueryWrapper<User> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("username", username).eq("password", password);
             User loginUser = userService.getOne(queryWrapper);
@@ -85,9 +86,8 @@ public class LoginController {
     }
 
 
-    
     @RequestMapping("/registSuccess")
-    public String registSuccess(HttpServletRequest req){
+    public String registSuccess(HttpServletRequest req) {
         //获取Session域中的验证码
         String token = (String) req.getSession().getAttribute("verifyCode");
         //删除当前session中的这个验证码
@@ -99,6 +99,7 @@ public class LoginController {
         //1、获取请求的参数
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        String sno = req.getParameter("sno");
         String email = req.getParameter("email");
         String code = req.getParameter("code");
 
@@ -107,27 +108,49 @@ public class LoginController {
 
         //2、检查 验证码是否正确
         if (token != null && token.equalsIgnoreCase(code)) {
-            //3、检查 用户名是否可用
-            QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
-            queryWrapper.eq("username", username);
-            User user1 = userService.getOne(queryWrapper);
-            if (user1!=null) {
+            //3、检查 用户名和学号是否可用
+            QueryWrapper<User> queryWrapper1 = new QueryWrapper<User>();
+            queryWrapper1.eq("username", username);
+            User user1 = userService.getOne(queryWrapper1);
+
+            QueryWrapper<User> queryWrapper2 = new QueryWrapper<User>();
+            queryWrapper2.eq("sno", sno);
+            User user2 = userService.getOne(queryWrapper2);
+
+            QueryWrapper<User> queryWrapper3 = new QueryWrapper<User>();
+            queryWrapper3.eq("email", email);
+            User user3 = userService.getOne(queryWrapper3);
+
+            if (user1 != null) {
                 System.out.println("用户名[" + username + "]已存在!");
                 // 把回显信息，保存到Request域中
                 req.setAttribute("msg", "用户名已存在！！");
                 req.setAttribute("username", username);
                 req.setAttribute("email", email);
+                req.setAttribute("sno", sno);
 
                 //跳回注册页面
                 return "user/regist";
+            } else if (user2 != null) {
+                // 把回显信息，保存到Request域中
+                req.setAttribute("msg", "学号已存在！！");
+                req.setAttribute("username", username);
+                req.setAttribute("email", email);
+                req.setAttribute("sno", sno);
+            } else if (user3 != null) {
+                // 把回显信息，保存到Request域中
+                req.setAttribute("msg", "邮箱已注册！！");
+                req.setAttribute("username", username);
+                req.setAttribute("email", email);
+                req.setAttribute("sno", sno);
             } else {
                 //可用
                 //调用Sservice保存到数据库
-                userService.save(new User(null,null,null,null,username,password,email));
-                QueryWrapper<User> queryWrapper1 = new QueryWrapper<User>();
-                queryWrapper1.eq("username", username);
-                User loginUser = userService.getOne(queryWrapper1);
-                req.getSession().setAttribute("user",loginUser);
+                userService.save(user);
+                QueryWrapper<User> queryWrapper4 = new QueryWrapper<User>();
+                queryWrapper4.eq("username", username);
+                User loginUser = userService.getOne(queryWrapper4);
+                req.getSession().setAttribute("user", loginUser);
                 //跳到注册成功页面 regist_success.jsp
                 return "user/regist_success";
             }
@@ -136,9 +159,12 @@ public class LoginController {
             req.setAttribute("msg", "验证码错误！！");
             req.setAttribute("username", username);
             req.setAttribute("email", email);
+            req.setAttribute("sno", sno);
             System.out.println("验证码[" + code + "]错误");
             return "user/regist";
         }
+        return "user/regist";
     }
 }
+
 

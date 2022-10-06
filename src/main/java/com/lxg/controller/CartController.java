@@ -1,2 +1,13 @@
-package com.lxg.controller;public class UserController {
+package com.lxg.controller;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class CartController {
+    @RequestMapping("/cart")
+    public String cart(){
+        return "cart/cart";
+    }
 }

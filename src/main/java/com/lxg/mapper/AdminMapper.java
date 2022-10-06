@@ -1,7 +1,8 @@
 package com.lxg.mapper;
 
-import com.lxg.domain.Admin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lxg.domain.Admin;
+
 
 /**
 * @author xiaolin

@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>书城首页</title>
-    <link type="text/css" rel="stylesheet" href="css/style.css" >
+    <link type="text/css" rel="stylesheet" th:href="@{css/style.css}" >
 </head>
 <body>
 
 <div id="header">
-    <img class="logo_img" alt="" src="img/logo.gif" >
+    <img class="logo_img" alt="" th:src="@{img/logo.gif}" >
     <span class="wel_word">网上书城</span>
     <div>
-        <a href="pages/user/login.html">登录</a> |
-        <a href="pages/user/regist.html">注册</a> &nbsp;&nbsp;
-        <a href="pages/cart/cart.html">购物车</a>
-        <a href="pages/manager/manager.html">后台管理</a>
+        <a th:href="@{/login}">登录</a> |
+        <a th:href="@{/regist}">注册</a> &nbsp;&nbsp;
+        <a th:href="@{/cart}">购物车</a>
+        <a th:href="@{/manager}">后台管理</a>
     </div>
 </div>
 <div id="main">
@@ -34,7 +34,7 @@
         </div>
         <div class="b_list">
             <div class="img_div">
-                <img class="book_img" alt="" src="img/default.jpg" />
+                <img class="book_img" alt="" th:src="@{img/default.jpg}" />
             </div>
             <div class="book_info">
                 <div class="book_name">
@@ -65,7 +65,7 @@
 
         <div class="b_list">
             <div class="img_div">
-                <img class="book_img" alt="" src="img/default.jpg" />
+                <img class="book_img" alt="" th:src="@{img/default.jpg}" />
             </div>
             <div class="book_info">
                 <div class="book_name">
@@ -96,7 +96,7 @@
 
         <div class="b_list">
             <div class="img_div">
-                <img class="book_img" alt="" src="img/default.jpg" />
+                <img class="book_img" alt="" th:src="@{img/default.jpg}" />
             </div>
             <div class="book_info">
                 <div class="book_name">
@@ -127,7 +127,7 @@
 
         <div class="b_list">
             <div class="img_div">
-                <img class="book_img" alt="" src="img/default.jpg" />
+                <img class="book_img" alt="" th:src="@{img/default.jpg}" />
             </div>
             <div class="book_info">
                 <div class="book_name">
