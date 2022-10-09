@@ -52,7 +52,7 @@ public class LoginAndRegistController {
             // 如果等于null,说明登录 失败!
             if (loginUser == null) {
                 // 把错误信息，和回显的表单项信息，保存到Request域中
-                req.setAttribute("msg", "用户或密码错误！");
+                req.setAttribute("login_msg", "用户或密码错误！");
                 req.setAttribute("username", username);
                 //   跳回登录页面
                 return "/user/login";
@@ -70,7 +70,7 @@ public class LoginAndRegistController {
             // 如果等于null,说明登录 失败!
             if (loginUser == null) {
                 // 把错误信息，和回显的表单项信息，保存到Request域中
-                req.setAttribute("msg", "用户或密码错误！");
+                req.setAttribute("login_msg", "用户或密码错误！");
                 req.setAttribute("username", username);
                 //   跳回登录页面
                 return "/user/login";
@@ -124,22 +124,23 @@ public class LoginAndRegistController {
             if (user1 != null) {
                 System.out.println("用户名[" + username + "]已存在!");
                 // 把回显信息，保存到Request域中
-                req.setAttribute("msg", "用户名已存在！！");
+                req.setAttribute("regist_msg", "用户名已存在！！");
                 req.setAttribute("username", username);
                 req.setAttribute("email", email);
                 req.setAttribute("sno", sno);
 
                 //跳回注册页面
-                return "user/regist";
+                return "/user/login";
+
             } else if (user2 != null) {
                 // 把回显信息，保存到Request域中
-                req.setAttribute("msg", "学号已存在！！");
+                req.setAttribute("regist_msg", "学号已存在！！");
                 req.setAttribute("username", username);
                 req.setAttribute("email", email);
                 req.setAttribute("sno", sno);
             } else if (user3 != null) {
                 // 把回显信息，保存到Request域中
-                req.setAttribute("msg", "邮箱已注册！！");
+                req.setAttribute("regist_msg","邮箱已注册！！");
                 req.setAttribute("username", username);
                 req.setAttribute("email", email);
                 req.setAttribute("sno", sno);
@@ -156,14 +157,14 @@ public class LoginAndRegistController {
             }
         } else {
             // 把回显信息，保存到Request域中
-            req.setAttribute("msg", "验证码错误！！");
+            req.setAttribute("regist_msg", "验证码错误！！");
             req.setAttribute("username", username);
             req.setAttribute("email", email);
             req.setAttribute("sno", sno);
             System.out.println("验证码[" + code + "]错误");
-            return "user/regist";
+            return "/user/login";
         }
-        return "user/regist";
+        return "/user/login";
     }
 }
 

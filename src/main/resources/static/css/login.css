@@ -1,0 +1,187 @@
+/* 去除浏览器默认样式 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    height:100%;
+}
+
+/* 设置body背景颜色 */
+body{
+    display: flex;
+    background: linear-gradient(120deg,#e0c3fc 0%,#8ec5fc 100%) no-repeat;
+}
+
+/* 设置整个登录注册的外层容器 */
+.login-box{
+    display: flex;
+    position: relative;
+    width: 1250px;
+    height: 700px;
+    margin: auto;
+    border-radius: 8px;
+    border:1px solid rgba(255,255,255,.6);
+    box-shadow: 4px 4px 3px rgba(0,0,0,.1);
+}
+
+/* 设置遮挡区外层容器 */
+.pre-box {
+    z-index: 9999;
+    width: calc(1250px / 2);
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    border: 4px;
+    color: #fff;
+    background-color: #edd4dc;
+    box-shadow: 4px 4px 3px rgba(0,0,0,.1);
+    transition: 1s ease-in-out;
+    overflow: hidden;
+}
+
+/* 设置遮挡区内图片区的样式 */
+.pre-box .img-box{
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 4px 4px 3px rgba(0,0,0,.1);;
+}
+
+/* 设置遮挡区图片样式 */
+.pre-box .img-box img{
+    width: 100%;
+    transition: 2s;
+    opacity: 80%;
+}
+
+/* 设置登录块和注册块外层容器 */
+.login-form,.regist-form{
+    flex: 1;
+    height: 100%;
+}
+
+/* 设置登录注册显示的标题的容器 */
+.title-box{
+    height: 150px;
+    line-height: 150px;
+}
+
+/* 设置登录注册显示的标题 */
+.title-box h4{
+    color: rgb(144,129,241);
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 32px;
+    text-shadow: 4px 4px 3px rgba(0,0,0,.1);
+}
+
+/* 设置表单容器 */
+.login-info form,.regist-info form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-info form .login-select{
+    width: 375px;
+    height: 50px;
+}
+
+.login-errorMsg{
+    margin-left: 25px;
+    color: red;
+}
+
+.regist-errorMsg{
+    transform: translateY(-20px);
+    color: red;
+}
+
+/* 设置填写的信息框 */
+.info{
+    width: 375px;
+    height: 50px;
+    margin-bottom: 25px;
+    text-indent: 10px;
+    border: 1px solid #b0cfe0;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+#code_img{
+    width: 200px;
+    height: 50px;
+    transform: translateX(88px) translateY(-50px);
+}
+
+.yzm{
+    width: 150px;
+    height: 50px;
+    text-indent: 10px;
+    border: 1px solid #b0cfe0;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transform: translateX(-113px);
+}
+
+/* 设置登录和注册的按钮 */
+.login-info form .button,
+.regist-info form .button{
+    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    font-size: 16px;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    border-radius: 4px;
+    background-color: #69b3f0;
+    color: white;
+    transform: translateX(112px);
+}
+
+.info:focus{
+    color: #b0cfe0;
+}
+
+.info:focus::placeholder{
+    opacity: 0;
+}
+
+/* 设置底部信息 */
+.login-bottom,
+.regist-bottom{
+    width: 18%;
+    transform: translateY(-50px);
+}
+
+.login-bottom button:hover,
+.regist-bottom button:hover{
+    cursor: pointer;
+    opacity: .8;
+
+}
+
+.login-bottom p,
+.regist-bottom p{
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    transform: translateX(125px);
+
+}
+
+.login-bottom:hover p{
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+
+.regist-bottom:hover p{
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
