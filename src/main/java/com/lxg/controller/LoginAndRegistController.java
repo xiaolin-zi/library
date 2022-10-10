@@ -129,6 +129,8 @@ public class LoginAndRegistController {
                 req.setAttribute("email", email);
                 req.setAttribute("sno", sno);
 
+                req.setAttribute("flag1","true");
+
                 //跳回注册页面
                 return "/user/login";
 
@@ -138,12 +140,18 @@ public class LoginAndRegistController {
                 req.setAttribute("username", username);
                 req.setAttribute("email", email);
                 req.setAttribute("sno", sno);
+
+                req.setAttribute("flag1","true");
+
             } else if (user3 != null) {
                 // 把回显信息，保存到Request域中
                 req.setAttribute("regist_msg","邮箱已注册！！");
                 req.setAttribute("username", username);
                 req.setAttribute("email", email);
                 req.setAttribute("sno", sno);
+
+                req.setAttribute("flag1","true");
+
             } else {
                 //可用
                 //调用Sservice保存到数据库
@@ -162,8 +170,15 @@ public class LoginAndRegistController {
             req.setAttribute("email", email);
             req.setAttribute("sno", sno);
             System.out.println("验证码[" + code + "]错误");
+
+
+            req.setAttribute("flag1","true");
+
             return "/user/login";
         }
+
+        req.setAttribute("flag1","true");
+
         return "/user/login";
     }
 }

@@ -18,29 +18,25 @@
         //页面加载完成之后
         $(function(){
 
-            // //给用户名输入框绑定失去焦点事件
-            // $("#username").blur(function () {
-            // 	//获取用户名
-            // 	var username = this.value;
-            // 	$.getJSON("http://localhost:8080/book02/userServlet","action=ajaxExistsUsername&username="+username,function (data) {
-            // 		if (data.existsUsername){
-            // 			$("span.errorMsg").text("用户名已存在！");
-            // 		}else{
-            // 			$("span.errorMsg").text("用户名可用！");
-            // 		}
-            // 	});
-            // });
+            //用于页面加载时判断当前是否是注册块
+            // alert("Please enter");
+            var obj = document.getElementById("regist-btn");
+            var flag1 = $(obj).attr('flag1');
+            // alert(obj);
+            // alert(flag1);
+            if(flag1){
+                $(".pre-box").css("transform","translateX(100%)")
+                $(".pre-box").css("background-color","#c9e0ed")
+                $(".pre-img").attr("src","./img/login/regist.jpg")
+            }
+
 
             //给验证码图片绑定单击事件
             $("#code_img").click(function () {
                 //alert("1");
-
                 //在事件响应的function函数中有一个this对象，是当前正在响应事件的dom对象
                 //src属性表示验证码的img标签的图片路径，可读可写
-
                 this.src= "http://localhost:8080/library/kaptcha?d="+new Date();
-
-
             });
 
 
@@ -126,7 +122,7 @@
                 <input class="info" type="text" placeholder="邮箱" autocomplete="off" name="email" id="email">
                 <input class="yzm" type="text" placeholder="验证码">
                 <img id="code_img" alt="" th:src="@{/kaptcha}">
-                <input class="button" type="submit" value="注册">
+                <input id="regist-btn" class="button" type="submit" value="注册" th:flag1="${flag1}">
             </form>
 
         </div>
@@ -160,14 +156,12 @@
     </div>
 </div>
 <script>
-    let flag=true;
+    let flag= true;
     const mySwitch=()=>{
         if(flag){
             $(".pre-box").css("transform","translateX(100%)")
             $(".pre-box").css("background-color","#c9e0ed")
             $(".pre-img").attr("src","./img/login/regist.jpg")
-
-
         }else{
             $(".pre-box").css("transform","translateX(0%)")
             $(".pre-box").css("background-color","#edd4dc")
