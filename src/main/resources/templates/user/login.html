@@ -120,9 +120,9 @@
                 <input class="info" type="password" placeholder="密码" autocomplete="off" name="password" id="password">
                 <input class="info" type="password" placeholder="确认密码" autocomplete="off" name="repwd" id="repwd">
                 <input class="info" type="text" placeholder="邮箱" autocomplete="off" name="email" id="email">
-                <input class="yzm" type="text" placeholder="验证码">
+                <input class="yzm" type="text" placeholder="验证码" autocomplete="off" name="code" id="code">
                 <img id="code_img" alt="" th:src="@{/kaptcha}">
-                <input id="regist-btn" class="button" type="submit" value="注册" th:flag1="${flag1}">
+                <input id="regist-btn" class="button" type="submit" value="注册" th:flag1="${session.flag1}">
             </form>
 
         </div>

@@ -23,4 +23,11 @@ public class ServiceTest {
         System.out.println(insert==1 ? "添加成功":"添加失败");
     }
 
+    @Test
+    void test(){
+
+
+    }
+
+
 }

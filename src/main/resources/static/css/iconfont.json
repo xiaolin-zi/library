@@ -1,0 +1,114 @@
+{
+  "id": "3701801",
+  "name": "sidebar",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "577402",
+      "name": "向右1",
+      "font_class": "xiangyou1",
+      "unicode": "e775",
+      "unicode_decimal": 59253
+    },
+    {
+      "icon_id": "629357",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "999258",
+      "name": "太阳",
+      "font_class": "ai250",
+      "unicode": "e6ee",
+      "unicode_decimal": 59118
+    },
+    {
+      "icon_id": "1766485",
+      "name": "符号-开关",
+      "font_class": "kaiguan",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    },
+    {
+      "icon_id": "5387613",
+      "name": "向左",
+      "font_class": "xiangzuo",
+      "unicode": "eb15",
+      "unicode_decimal": 60181
+    },
+    {
+      "icon_id": "5485677",
+      "name": "向右",
+      "font_class": "xiangyou",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "5485678",
+      "name": "向左",
+      "font_class": "xiangzuo1",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "5982854",
+      "name": "开关",
+      "font_class": "kaiguan1",
+      "unicode": "ec76",
+      "unicode_decimal": 60534
+    },
+    {
+      "icon_id": "6626335",
+      "name": "退出",
+      "font_class": "tuichu",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "7339840",
+      "name": "用户管理",
+      "font_class": "yonghuguanli",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
+    },
+    {
+      "icon_id": "8605719",
+      "name": "规则管理",
+      "font_class": "guizeguanli",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "13638673",
+      "name": "开关",
+      "font_class": "kaiguan2",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "17619180",
+      "name": "图书管理",
+      "font_class": "tubiaozhizuomoban-37",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "18170149",
+      "name": "首页,屋子,主页,房子",
+      "font_class": "home",
+      "unicode": "e973",
+      "unicode_decimal": 59763
+    },
+    {
+      "icon_id": "26393526",
+      "name": "icon_晚安、月亮、睡眠",
+      "font_class": "a-icon_wananyueliangshuimian",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    }
+  ]
+}

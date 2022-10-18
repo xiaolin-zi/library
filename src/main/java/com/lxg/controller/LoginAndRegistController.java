@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 
 @Controller
@@ -25,17 +27,24 @@ public class LoginAndRegistController {
     private AdminService adminService;
 
     @RequestMapping("/login")
-    public String login() {
+    public String login(HttpSession session) {
+        session.removeAttribute("flag1");
         return "user/login";
     }
 
     @RequestMapping("/regist")
-    public String regist() {
-        return "user/regist";
+    public String regist(HttpServletRequest req,HttpSession session) {
+
+            session.setAttribute("flag1","true");
+
+//        return "user/regist";
+        return "user/login";
     }
 
     @RequestMapping("/loginSuccess")
-    public String loginSuccess(HttpServletRequest req) {
+    public String loginSuccess(HttpServletRequest req, HttpSession session) {
+
+        session.removeAttribute("flag1");
 
         //  1、获取请求的参数
         String username = req.getParameter("username");
@@ -87,7 +96,7 @@ public class LoginAndRegistController {
 
 
     @RequestMapping("/registSuccess")
-    public String registSuccess(HttpServletRequest req) {
+    public String registSuccess(HttpServletRequest req,HttpSession session) throws Exception {
         //获取Session域中的验证码
         String token = (String) req.getSession().getAttribute("verifyCode");
         //删除当前session中的这个验证码
@@ -129,7 +138,8 @@ public class LoginAndRegistController {
                 req.setAttribute("email", email);
                 req.setAttribute("sno", sno);
 
-                req.setAttribute("flag1","true");
+                session.setAttribute("flag1","true");
+
 
                 //跳回注册页面
                 return "/user/login";
@@ -141,7 +151,8 @@ public class LoginAndRegistController {
                 req.setAttribute("email", email);
                 req.setAttribute("sno", sno);
 
-                req.setAttribute("flag1","true");
+                session.setAttribute("flag1","true");
+
 
             } else if (user3 != null) {
                 // 把回显信息，保存到Request域中
@@ -150,7 +161,8 @@ public class LoginAndRegistController {
                 req.setAttribute("email", email);
                 req.setAttribute("sno", sno);
 
-                req.setAttribute("flag1","true");
+                session.setAttribute("flag1","true");
+
 
             } else {
                 //可用
@@ -172,12 +184,14 @@ public class LoginAndRegistController {
             System.out.println("验证码[" + code + "]错误");
 
 
-            req.setAttribute("flag1","true");
+            session.setAttribute("flag1","true");
+
 
             return "/user/login";
         }
 
-        req.setAttribute("flag1","true");
+        session.setAttribute("flag1","true");
+
 
         return "/user/login";
     }
